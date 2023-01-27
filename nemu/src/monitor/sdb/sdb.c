@@ -3,6 +3,7 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 #include "sdb.h"
+#include <memory/paddr.h>
 
 static int is_batch_mode = false;
 
@@ -38,6 +39,42 @@ static int cmd_q(char *args) {
        	return -1;
 }
 
+static int cmd_si(char *args)
+{
+  char *arg=strtok(NULL," ");
+	int step;
+	if(arg==NULL) step=1;
+	else
+	{
+		sscanf(arg,"%d",&step);	
+	}
+	cpu_exec(step);
+	return 0;
+}
+
+static int cmd_info(char *args)
+{
+  char *arg=strtok(NULL," ");
+	if(strcmp(arg,"r")==0)
+	{
+    isa_reg_display();
+	}	
+  return 0;
+}
+
+static int cmd_x(char *args)
+{
+  char *arg=strtok(NULL," ");
+  int num;
+  int exp;
+  sscanf(arg,"%d %x",&num,&exp);
+  for(int i=0;i<num;i++)
+  {
+    printf("0x%08x 0x%08x\n",exp+i*32,paddr_read(exp+i*32,32));
+  }
+  return 0;
+}
+
 static int cmd_help(char *args);
 
 static struct {
@@ -47,9 +84,11 @@ static struct {
 } cmd_table [] = {
   { "help", "Display informations about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
-  { "q", "Exit NEMU", cmd_q },
-
   /* TODO: Add more commands */
+  { "q", "Exit NEMU", cmd_q },
+  {"si", "single-step exeution", cmd_si },
+  {"info", "Print register", cmd_info},
+  {"x", "Scan Memory Print Memory Value",cmd_x},
 
 };
 
