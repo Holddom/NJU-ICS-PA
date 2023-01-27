@@ -68,7 +68,9 @@ static int cmd_x(char *args)
   int num;
   int exp;
   sscanf(arg,"%d %x",&num,&exp);
-  printf("%s",args);
+  printf("%s\n",args);
+  char *s=strtok("x 1 80000000\n"," ");
+  printf("%s\n",s);
   // for(int i=0;i<num;i++)
   // {
   //   printf("0x%08x 0x%08x\n",exp+i*4,vaddr_read(exp+i*4,4));
