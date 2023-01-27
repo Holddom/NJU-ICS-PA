@@ -68,10 +68,11 @@ static int cmd_x(char *args)
   int num;
   int exp;
   sscanf(arg,"%d %x",&num,&exp);
-  for(int i=0;i<num;i++)
-  {
-    printf("0x%08x 0x%08x\n",exp+i*32,vaddr_read(exp+i*4,4));
-  }
+  printf("%d %x",num,exp);
+  // for(int i=0;i<num;i++)
+  // {
+  //   printf("0x%08x 0x%08x\n",exp+i*4,vaddr_read(exp+i*4,4));
+  // }
   return 0;
 }
 
