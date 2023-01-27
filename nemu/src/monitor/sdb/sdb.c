@@ -3,7 +3,7 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 #include "sdb.h"
-#include <memory/paddr.h>
+#include <memory/vaddr.h>
 
 static int is_batch_mode = false;
 
@@ -70,7 +70,7 @@ static int cmd_x(char *args)
   sscanf(arg,"%d %x",&num,&exp);
   for(int i=0;i<num;i++)
   {
-    printf("0x%08x 0x%08x\n",exp+i*32,paddr_read(exp+i*32,32));
+    printf("0x%08x 0x%08x\n",exp+i*32,vaddr_read(exp+i*4,4));
   }
   return 0;
 }
