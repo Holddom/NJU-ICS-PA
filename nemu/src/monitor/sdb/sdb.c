@@ -71,10 +71,10 @@ static int cmd_x(char *args)
   arg=strtok(NULL," ");
   sscanf(arg,"%x",&exp);
   printf("%d %x\n",num,exp);
-  // for(int i=0;i<num;i++)
-  // {
-  //   printf("0x%08x 0x%08x\n",exp+i*4,vaddr_read(exp+i*4,4));
-  // }
+  for(int i=0;i<num;i++)
+  {
+    printf("0x%08x 0x%08x\n",exp+i*4,vaddr_read(exp+i*4,4));
+  }
   return 0;
 }
 
