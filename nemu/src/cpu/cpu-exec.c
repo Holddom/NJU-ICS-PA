@@ -64,12 +64,12 @@ void fetch_decode(Decode *s, vaddr_t pc) {
   s->EHelper = g_exec_table[idx];
 #ifdef CONFIG_ITRACE
   char *p = s->logbuf;
-  p += snprintf(p, sizeof(s->logbuf), FMT_WORD ":", s->pc);
+  p += snprintf(p, sizeof(s->logbuf), FMT_WORD ":", s->pc);//写入pc值
   int ilen = s->snpc - s->pc;
   int i;
   uint8_t *instr = (uint8_t *)&s->isa.instr.val;
   for (i = 0; i < ilen; i ++) {
-    p += snprintf(p, 4, " %02x", instr[i]);
+    p += snprintf(p, 4, " %02x", instr[i]); //写入解码指令
   }
   int ilen_max = MUXDEF(CONFIG_ISA_x86, 8, 4);
   int space_len = ilen_max - ilen;
@@ -77,7 +77,7 @@ void fetch_decode(Decode *s, vaddr_t pc) {
   space_len = space_len * 3 + 1;
   memset(p, ' ', space_len);
   p += space_len;
-
+  //反汇编函数   应该是在这里打印的 cpp的部分
   void disassemble(char *str, int size, uint64_t pc, uint8_t *code, int nbyte);
   disassemble(p, s->logbuf + sizeof(s->logbuf) - p,
       MUXDEF(CONFIG_ISA_x86, s->snpc, s->pc), (uint8_t *)&s->isa.instr.val, ilen);
