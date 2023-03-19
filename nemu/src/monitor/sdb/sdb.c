@@ -55,6 +55,11 @@ static int cmd_si(char *args)
 static int cmd_info(char *args)
 {
   char *arg=strtok(NULL," ");
+  if(arg==NULL) 
+  {
+    printf("Missing extra letters\n");
+    return 0;
+  }
 	if(strcmp(arg,"r")==0)
 	{
     isa_reg_display();
