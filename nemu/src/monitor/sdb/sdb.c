@@ -58,7 +58,7 @@ static int cmd_info(char *args)
   if(arg==NULL) 
   {
     printf("Missing extra letters\n");
-    return 0;
+    return 1;
   }
 	if(strcmp(arg,"r")==0)
 	{
@@ -72,8 +72,18 @@ static int cmd_x(char *args)
   char *arg=strtok(NULL," ");
   int num;
   int exp;
+  if(arg==NULL)
+  {
+    printf(" Missing additional parameters \n");
+    return 1;
+  }
   sscanf(arg,"%d",&num);
   arg=strtok(NULL," ");
+  if(arg==NULL)
+  {
+    printf(" Missing additional parameters \n");
+    return 1;
+  }
   sscanf(arg,"%x",&exp);
   printf("%d %x\n",num,exp);
   for(int i=0;i<num;i++)
