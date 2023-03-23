@@ -68,6 +68,7 @@ static int cmd_si(char *args)
 // }
 
 static int cmd_info(char *args){
+  printf("%s",args);
   if (args == NULL){
     printf("info指令 缺少参数\n");
   }else if (strcmp(args, "r") == 0){
