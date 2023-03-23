@@ -55,6 +55,8 @@ static int cmd_si(char *args)
 static int cmd_info(char *args)
 {
   char *arg=strtok(NULL," ");
+  printf("%s\n",args);
+  printf("%s",arg);
   if(arg==NULL) 
   {
     printf("Missing extra letters\n");
@@ -93,6 +95,11 @@ static int cmd_x(char *args)
   return 0;
 }
 
+static int cmd_p()
+{
+  return 0;
+}
+
 static int cmd_help(char *args);
 
 static struct {
@@ -107,7 +114,7 @@ static struct {
   {"si", "single-step exeution", cmd_si },
   {"info", "Print register", cmd_info},
   {"x", "Scan Memory Print Memory Value",cmd_x},
-
+  {"p","求出当前表达式的值",cmd_p},
 };
 
 #define NR_CMD ARRLEN(cmd_table)
