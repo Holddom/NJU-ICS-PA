@@ -54,6 +54,7 @@ static int cmd_si(char *args)
 
 static int cmd_info(char *args)
 {
+  printf("%d\n",strcmp(args,"r"));
   char *arg=strtok(NULL," ");
   if(arg==NULL) 
   {
