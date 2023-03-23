@@ -55,7 +55,7 @@ static int cmd_si(char *args)
 static int cmd_info(char *args)
 {
   printf("%s\n",args);						//打印 info r
-  printf("%s %d %s\n",args,strcmp(args,"r"),args); //打印 0 r
+  printf("%d %s\n",strcmp(args,"r"),args); //打印 0 r
   char *arg=strtok(NULL," ");
   if(arg==NULL) 
   {
