@@ -52,22 +52,34 @@ static int cmd_si(char *args)
 	return 0;
 }
 
-static int cmd_info(char *args)
-{
-  char *arg=strtok(NULL," ");
-  printf("%s\n",args);
-  printf("%s",arg);
-  if(arg==NULL) 
-  {
-    printf("Missing extra letters\n");
-    return 1;
-  }
-	if(strcmp(arg,"r")==0)
-	{
+// static int cmd_info(char *args)
+// {
+//   char *arg=strtok(NULL," ");
+//   if(arg==NULL) 
+//   {
+//     printf("Missing extra letters\n");
+//     return 1;
+//   }
+// 	if(strcmp(arg,"r")==0)
+// 	{
+//     isa_reg_display();
+// 	}	
+//   return 0;
+// }
+
+static int cmd_info(char *args){
+  if (args == NULL){
+    printf("info指令 缺少参数\n");
+  }else if (strcmp(args, "r") == 0){
     isa_reg_display();
-	}	
+  }
+  else {
+    printf("未知的参数 [%s] \n", args);
+  }
+
   return 0;
 }
+
 
 static int cmd_x(char *args)
 {
