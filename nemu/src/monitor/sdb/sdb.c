@@ -96,7 +96,7 @@ static int cmd_x(char *args)
 
 static int cmd_p(char* args)
 {
-  bool success;
+  bool success=true;
   uint32_t v = expr(args, &success);
   if (success)
     printf("%s = \e[1;36m%u\e[0m\n", args, v);
