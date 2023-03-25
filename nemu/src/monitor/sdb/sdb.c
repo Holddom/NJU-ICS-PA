@@ -54,8 +54,6 @@ static int cmd_si(char *args)
 
 static int cmd_info(char *args)
 {
-  printf("%s\n",args);						//打印 info r
-  printf("%d %s\n",strcmp(args,"r"),args); //打印 0 r
   char *arg=strtok(NULL," ");
   if(arg==NULL) 
   {
@@ -96,8 +94,12 @@ static int cmd_x(char *args)
   return 0;
 }
 
-static int cmd_p()
+static int cmd_p(char* args)
 {
+  bool success;
+  uint32_t v = expr(args, &success);
+  if (success)
+    printf("%s = \e[1;36m%u\e[0m\n", args, v);
   return 0;
 }
 
