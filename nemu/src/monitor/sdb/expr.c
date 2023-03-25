@@ -27,13 +27,13 @@ static struct rule {
   {" +", TK_NOTYPE},    // spaces
   {"\\+", TK_PLUS},         // plus
   {"==", TK_EQ},        // equal
+  {"0[Xx][0-9a-fA-F]+", TK_HEX},//十六进制数字 注意这个必须在十进制数字上面
   {"[0-9]+",TK_NUM},       //十进制数字
   {"\\(",TK_LBR},          //左括号
   {"\\)",TK_RBR},          //右括号
   {"\\-",TK_SUB},          
   {"\\*",TK_MUL},
   {"\\/",TK_DIV},
-  {"0[Xx][0-9a-fA-F]+", TK_HEX},//十六进制数字
   {"\\$[a-zA-Z]+", TK_REG}, //寄存器
   {"\\|\\|", TK_OR},
   {"&&",TK_ADD},
