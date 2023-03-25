@@ -21,9 +21,9 @@ static void gen_rand_expr() { //TODO:
 }
 
 int main(int argc, char *argv[]) {
-  int seed = time(0);
+  int seed = time(0);    //随机数种子
   srand(seed);
-  int loop = 1;
+  int loop = 1;   //这是生成的用例个数
   if (argc > 1) {
     sscanf(argv[1], "%d", &loop);
   }
