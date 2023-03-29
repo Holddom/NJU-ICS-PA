@@ -60,10 +60,16 @@ static int cmd_info(char *args)
     printf("Missing extra letters\n");
     return 1;
   }
-	if(strcmp(arg,"r")==0)
+	else if(strcmp(arg,"r")==0)
 	{
     isa_reg_display();
-	}	
+	}
+  else if(strcmp(arg,"w")==0){
+    watchpoint_display();
+  }
+  else{
+    printf("未知的参数[%s]\n",arg);
+  }	
   return 0;
 }
 
@@ -103,6 +109,27 @@ static int cmd_p(char* args)
   return 0;
 }
 
+static int cmd_w(char* args)
+{
+  bool success=true;
+  WP *node=new_wp(args,&success);
+  if(!success){
+    printf("未申请成功\n");
+  }
+  else{
+    printf("Created a \e[1;36mWatchPoint(NO.%d)\e[0m: %s \n", node->NO, node->condation);
+  }
+  return 0;
+}
+
+static int cmd_d(char* args)
+{
+  int NO;
+  sscanf(args,"%d", &NO);
+  free_wp(NO);
+  return 0;
+}
+
 static int cmd_help(char *args);
 
 static struct {
@@ -118,6 +145,8 @@ static struct {
   {"info", "Print register", cmd_info},
   {"x", "Scan Memory Print Memory Value",cmd_x},
   {"p","求出当前表达式的值",cmd_p},
+  {"w","设置一个监视点 后加一个表达式",cmd_w},
+  {"d","由编号删除一个监视点",cmd_d},
 };
 
 #define NR_CMD ARRLEN(cmd_table)
