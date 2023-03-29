@@ -124,6 +124,11 @@ static int cmd_w(char* args)
 
 static int cmd_d(char* args)
 {
+  if(args==NULL)
+  {
+    printf("缺少参数\n");
+    return 0;
+  }
   int NO;
   sscanf(args,"%d", &NO);
   free_wp(NO);
