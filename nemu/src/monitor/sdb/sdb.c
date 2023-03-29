@@ -148,7 +148,7 @@ static struct {
   /* TODO: Add more commands */
   { "q", "Exit NEMU", cmd_q },
   {"si", "single-step exeution", cmd_si },
-  {"info", "Print register", cmd_info},
+  {"info", "Print register or watchpoint", cmd_info},
   {"x", "Scan Memory Print Memory Value",cmd_x},
   {"p","求出当前表达式的值",cmd_p},
   {"w","设置一个监视点 后加一个表达式",cmd_w},
