@@ -19,4 +19,6 @@ void free_wp(int NO);
 
 void watchpoint_display();
 
+bool check_watchpoint(WP **point);
+
 #endif
