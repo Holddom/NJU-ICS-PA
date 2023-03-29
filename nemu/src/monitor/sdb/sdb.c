@@ -41,6 +41,10 @@ static int cmd_q(char *args) {
 
 static int cmd_si(char *args)
 {
+  if(nemu_state.state == NEMU_STOP)
+  {
+    nemu_state.state = NEMU_RUNNING;
+  }
   char *arg=strtok(NULL," ");
 	int step;
 	if(arg==NULL) step=1;
