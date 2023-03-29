@@ -31,7 +31,7 @@ WP* new_wp(char * condition, bool *success){//从free链表中返回一个空闲
     free_->next=ret->next;
     ret->next=NULL;
     expr(condition,success);
-    strcpy(ret->condation,condition);
+    strcpy(ret->condition,condition);
 
     if(head==NULL)  //head链表无头结点
     {
@@ -82,7 +82,7 @@ void watchpoint_display()
   printf("NO.\tCondation\n");
   WP* cur = head;
   while (cur){
-    printf("\e[1;36m%d\e[0m\t\e[0;32m%s\e[0m\n", cur->NO, cur->condation);
+    printf("\e[1;36m%d\e[0m\t\e[0;32m%s\e[0m\n", cur->NO, cur->condition);
     cur = cur->next;
   }
 }

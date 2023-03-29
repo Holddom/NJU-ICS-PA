@@ -117,7 +117,7 @@ static int cmd_w(char* args)
     printf("未申请成功\n");
   }
   else{
-    printf("Created a \e[1;36mWatchPoint(NO.%d)\e[0m: %s \n", node->NO, node->condation);
+    printf("Created a \e[1;36mWatchPoint(NO.%d)\e[0m: %s \n", node->NO, node->condition);
   }
   return 0;
 }
@@ -132,6 +132,7 @@ static int cmd_d(char* args)
   int NO;
   sscanf(args,"%d", &NO);
   free_wp(NO);
+  printf("删除了编号为:NO.%d的监视点\n",NO);
   return 0;
 }
 

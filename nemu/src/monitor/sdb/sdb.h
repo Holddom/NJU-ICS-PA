@@ -4,7 +4,7 @@
 typedef struct watchpoint {
   int NO;
   struct watchpoint *next;
-  char condation[32];
+  char condition[32];
 
 } WP;
 
