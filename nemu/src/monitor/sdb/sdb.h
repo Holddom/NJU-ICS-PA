@@ -1,11 +1,13 @@
 #ifndef __SDB_H__
 #define __SDB_H__
 
+typedef unsigned int uint32_t;
+
 typedef struct watchpoint {
   int NO;
   struct watchpoint *next;
   char condition[32];
-
+  uint32_t prev;
 } WP;
 
 

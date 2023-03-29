@@ -30,7 +30,7 @@ WP* new_wp(char * condition, bool *success){//从free链表中返回一个空闲
     ret->NO= number++;
     free_->next=ret->next;
     ret->next=NULL;
-    expr(condition,success);
+    ret->prev=expr(condition,success);
     strcpy(ret->condition,condition);
 
     if(head==NULL)  //head链表无头结点
@@ -93,8 +93,10 @@ bool check_watchpoint(WP **point)
   bool success=true;
   while(cur)
   {
-    if(expr(cur->condition,&success))
+    uint32_t num=expr(cur->condition,&success);
+    if(num!=cur->prev)
     {
+      cur->prev=num;
       *point = cur;
       return true;
     }
