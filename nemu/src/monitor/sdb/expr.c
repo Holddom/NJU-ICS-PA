@@ -34,7 +34,7 @@ static struct rule {
   {"\\-",TK_SUB},          
   {"\\*",TK_MUL},
   {"\\/",TK_DIV},
-  {"\\$[a-zA-Z]+", TK_REG}, //寄存器
+  {"\\$[0-9a-z]+", TK_REG}, //寄存器
   {"\\|\\|", TK_OR},
   {"&&",TK_ADD},
   //还需添加十进制整数 - * / 和括号
